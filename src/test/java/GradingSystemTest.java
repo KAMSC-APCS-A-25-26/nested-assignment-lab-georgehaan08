@@ -350,8 +350,8 @@ public class GradingSystemTest {
 
     @Test
     public void testInputPrompt() {
-        String output = runProgramWithInput("100");
-        assertTrue(output.contains(" "), 
+        String output = runProgramWithInput("85");
+        assertTrue(output.contains("Enter a score"),
             "❌ Program should prompt user for score input!");
     }
 
