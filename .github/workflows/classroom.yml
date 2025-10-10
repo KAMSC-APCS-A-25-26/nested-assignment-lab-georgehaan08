@@ -1,0 +1,40 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Grading System Test
+      id: grading-system-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Grading System Test
+        setup-command: "./setup.sh"
+        command: "./tests/run-grade.sh"
+        timeout: 10
+        max-score: 5
+    - name: Leap Year Test
+      id: leap-year-test
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Leap Year Test
+        setup-command: "./setup.sh"
+        command: "./tests/run-leap.sh"
+        timeout: 10
+        max-score: 5
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        GRADING-SYSTEM-TEST_RESULTS: "${{steps.grading-system-test.outputs.result}}"
+        LEAP-YEAR-TEST_RESULTS: "${{steps.leap-year-test.outputs.result}}"
+      with:
+        runners: grading-system-test,leap-year-test
