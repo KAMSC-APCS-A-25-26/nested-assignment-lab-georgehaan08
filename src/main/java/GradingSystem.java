@@ -5,7 +5,7 @@ public class GradingSystem {
 
         // TODO: Step 1 - Get the score from user
         Scanner sc = new Scanner(System.in);
-        System.out.print("Insert a score (0-100):  ");
+        System.out.print("Enter a score (0–100): ");
         int score = sc.nextInt();
 
         // TODO: Step 2 - Implement nested if logic for letter grades
