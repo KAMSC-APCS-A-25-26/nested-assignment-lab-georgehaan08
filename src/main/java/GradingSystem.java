@@ -4,7 +4,7 @@ public class GradingSystem {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter a grade (0-100): ");
+        System.out.println("Enter a grade (0-100):");
         int grade = sc.nextInt();
         if(grade>=98)
         {
