@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class LeapYearChecker {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Year: ");
+        System.out.println("Enter Year:");
         int year = sc.nextInt();
         if(year % 400 == 0)
         {
